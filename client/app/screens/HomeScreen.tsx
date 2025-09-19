@@ -18,6 +18,7 @@ export default function HomeScreen({ navigation }: Props) {
     { label: 'Map', screen: 'Map' },
     { label: 'Virtual Tours', screen: 'Tour' },
     { label: 'Events', screen: 'Events' },
+    { label: 'AR', screen: 'AR' },
   ];
 
   return (
@@ -32,7 +33,7 @@ export default function HomeScreen({ navigation }: Props) {
         <Text style={styles.subtitle}>Explore Sikkim’s Monasteries</Text>
 
         {screens.map((item, i) => (
-          <BlurView intensity={50} tint="light" style={[styles.buttonContainer, { backgroundColor: 'rgba(128,128,128,0.4)' }]}>
+          <BlurView key={item.screen} intensity={50} tint="light" style={[styles.buttonContainer, { backgroundColor: 'rgba(128,128,128,0.4)' }]}>
             <TouchableOpacity
               style={styles.button}
               onPress={() => navigation.navigate(item.screen)}

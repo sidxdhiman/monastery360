@@ -3,4 +3,5 @@ export type RootStackParamList = {
   Map: undefined;
   Tour: undefined;
   Events: undefined;
+  AR: undefined;
 };

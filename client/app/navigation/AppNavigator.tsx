@@ -5,6 +5,7 @@ import EventsScreen from '../screens/EventScreen';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import TourScreen from '../screens/TourScreen';
+import ARScreen from '../screens/arScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -15,6 +16,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="Tour" component={TourScreen} />
       <Stack.Screen name="Events" component={EventsScreen} />
+      <Stack.Screen name="AR" component={ARScreen} /> 
     </Stack.Navigator>
   );
 }
