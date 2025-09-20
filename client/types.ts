@@ -5,4 +5,6 @@ export type RootStackParamList = {
   Tour: undefined;
   Events: undefined;
   AR: undefined;
+  RumtekInfo: undefined;
+  Transport: undefined;
 };

@@ -97,6 +97,7 @@
 
 
 // HomeScreen.tsx
+import { useNavigation } from '@react-navigation/native';
 import { Bell, Search, Settings } from 'lucide-react-native';
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -104,6 +105,8 @@ import { Calendar } from 'react-native-calendars';
 import MapView, { Marker } from 'react-native-maps';
 
 const Monastery360Home = () => {
+  const navigation = useNavigation();
+
   const temples = [
     {
       name: 'Rumtek Monastery',
@@ -146,13 +149,21 @@ const Monastery360Home = () => {
         <Text style={styles.sectionTitle}>Monasteries</Text>
         <View style={styles.templesRow}>
           {temples.map((temple, index) => (
-            <View key={index} style={styles.templeCard}>
+            <TouchableOpacity
+              key={index}
+              style={styles.templeCard}
+              onPress={() => {
+                if (temple.name === 'Rumtek Monastery') {
+                  navigation.navigate('RumtekInfo'); // Must match navigator
+                }
+              }}
+            >
               <Image source={temple.image} style={styles.templeImageStyle} resizeMode="cover" />
               <View style={styles.templeOverlay} />
               <View style={styles.templeNameContainer}>
                 <Text style={styles.templeName}>{temple.name}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
         <TouchableOpacity style={{ marginTop: 8, alignItems: 'center' }}>
@@ -191,12 +202,20 @@ const Monastery360Home = () => {
         <Text style={styles.sectionTitleGray}>Features</Text>
         <View style={styles.featuredRow}>
           {featuredServices.map((service, index) => (
-            <View key={index} style={styles.featuredCardRow}>
+            <TouchableOpacity
+              key={index}
+              style={styles.featuredCardRow}
+              onPress={() => {
+                if (service.name === 'Transport Bookings') {
+                  navigation.navigate('Transport'); // Must match navigator
+                }
+              }}
+            >
               <View style={[styles.featuredIcon, { backgroundColor: service.color }]}>
                 <Text style={{ fontSize: 18 }}>{service.icon}</Text>
               </View>
               <Text style={styles.featuredText}>{service.name}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>
